@@ -110,6 +110,7 @@ venv.bak/
 condaenv.*
 keys/
 */player.csv
+crewai-env/
 
 # Spyder project settings
 .spyderproject

@@ -44,16 +44,16 @@ class LoadConfig:
         self.embedding_model_name = os.getenv("embed_deployment_name")
 
     def load_openai_models(self):
-        azure_openai_api_key = os.environ["OPENAI_API_KEY"]
-        azure_openai_endpoint = os.environ["OPENAI_API_BASE"]
+        azure_openai_api_key = os.environ["AZURE_OPENAI_API_KEY"]
+        azure_openai_endpoint = os.environ["AZURE_OPENAI_ENDPOINT"]
         # This will be used for the GPT and embedding models
         self.azure_openai_client = AzureOpenAI(
             api_key=azure_openai_api_key,
-            api_version=os.getenv("OPENAI_API_VERSION"),
+            api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
             azure_endpoint=azure_openai_endpoint
         )
         self.langchain_llm = AzureChatOpenAI(
-            openai_api_version=os.getenv("OPENAI_API_VERSION"),
+            openai_api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
             azure_deployment=self.model_name,
             model_name=self.model_name,
             temperature=self.temperature)
